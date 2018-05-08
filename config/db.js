@@ -30,6 +30,17 @@ function query(db, data) {
     case 'add':
       collection.insert(data.data, data.callback);
       break;
+    case 'update':
+      collection.update(
+        {_id: objectId(data.id)},
+        {$set: data.data},
+        {},
+        data.callback
+      );
+      break;
+    case 'remove':
+      collection.remove({_id: objectId(data.id)}, data.callback);
+      break;
   }
 }
 

@@ -17,6 +17,9 @@ module.exports = function(app) {
   });
 
   app.post('/api', function(request, response) {
+    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:90');
+    console.log(request.body);
+    return;
     app.app.controllers.users.add(app, request, response);
   });
 }

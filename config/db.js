@@ -41,6 +41,40 @@ function query(db, data) {
     case 'remove':
       collection.remove({_id: objectId(data.id)}, data.callback);
       break;
+    case 'add_posts':
+      collection.insert(data.data, data.callback);
+      break;
+    case 'view_posts':
+      collection.find({}).toArray(data.callback);
+      break;
+    case 'update_post':
+      collection.update(
+        {_id: objectId(data.data.id)},
+        {
+          $push: {
+            comments: {
+              id: new objectId(),
+              comment: data.data.comment
+            }
+          }
+        },
+        data.callback
+      );
+      break;
+      case 'delete_comment_post':
+        collection.update(
+          {},
+          {
+            $pull: {
+              comments: {
+                id: objectId(data.data.id)
+              }
+            }
+          },
+          {multi: true},
+          data.callback
+        );
+        break;
   }
 }
 

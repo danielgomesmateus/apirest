@@ -13,6 +13,15 @@ app.use(expressValidator());
 app.use(connectMultiparty());
 app.use(helmet());
 
+app.use(function(request, response, next) {
+
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  response.setHeader('Access-Control-Allow-Headers', 'content-type');
+  response.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 consign({})
   .include('/app/controllers')
   .then('app/models')

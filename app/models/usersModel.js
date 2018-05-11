@@ -1,5 +1,4 @@
 function usersModel(connDB) {
-
   this._connDB = connDB;
 }
 

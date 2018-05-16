@@ -34,6 +34,6 @@ todos os requisitos necessários.
 npm install
 ```
 
-## Authors
+## Autor
 
 * **Daniel Gomes Mateus**

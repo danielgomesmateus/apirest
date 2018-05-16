@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.app.controllers.users.update(app, request, response);
   });
 
-  app.delete('/api/user/delete/:id', function(request, response) {
+  app.delete('/api/user/:id', function(request, response) {
 
     app.app.controllers.users.remove(app, request, response);
   });
